@@ -1,0 +1,19 @@
+{
+  "name": "hatespeech",
+  "version": "1.0.0",
+  "main": "generateHS.js",
+  "type": "module",
+  "scripts": {
+    "start": "node generateHS.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "dotenv": "^16.4.7",
+    "openai": "^4.80.1",
+    "require": "^2.4.20"
+  }
+}
