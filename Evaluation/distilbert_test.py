@@ -24,7 +24,7 @@ def predict_sentiment(text):
     return probs[0][0].item() 
 
 # Load your CSV data
-df = pd.read_csv('../Data/merged_hate_non_hate_speech.csv')
+df = pd.read_csv('../Data/merged_all_conversations.csv')
 
 # Apply the model to the messages
 print("Calculating scores...")
