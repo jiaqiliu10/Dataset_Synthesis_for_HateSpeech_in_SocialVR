@@ -7,7 +7,7 @@ file_path = '../Data/merged_all_conversations.csv'
 data = pd.read_csv(file_path)  # TODO: replace this set with the total hate speech dataset
 
 # 把数据集拆分为数据 X 和标签 y
-X, y = data.loc[:, ['video', 'message']].values, data.loc[:, 'label'].values
+X, y = data.loc[:, 'message'].values, data.loc[:, 'label'].values
 
 # firstly divide 80% training，20% temp
 X_train, X_temp, y_train, y_temp = train_test_split(X, y, test_size=0.2, random_state=0, stratify=y)
