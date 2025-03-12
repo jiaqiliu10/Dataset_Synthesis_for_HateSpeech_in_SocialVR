@@ -5,12 +5,17 @@ from datasets import Dataset
 import torch
 from sklearn.metrics import accuracy_score, precision_recall_fscore_support
 
+<<<<<<< Updated upstream
 # Load data
 data = pd.read_csv('/home/liu.jiaqi10/CS7980/fine_tune/fine_tune_dataset.csv')
+=======
+# 加载数据
+data = pd.read_csv('../Data/merged_all_conversations.csv')
+>>>>>>> Stashed changes
 
 # Split dataset: 80% train, 10% validation, 10% test
 train_texts, test_texts, train_labels, test_labels = train_test_split(
-    data['text'], data['label'], test_size=0.2, random_state=42
+    data['message'], data['label'], test_size=0.2, random_state=42
 )
 val_texts, test_texts, val_labels, test_labels = train_test_split(
     test_texts, test_labels, test_size=0.5, random_state=42
@@ -45,9 +50,15 @@ training_args = TrainingArguments(
     evaluation_strategy="epoch",
     save_strategy="epoch",
     learning_rate=2e-5,
+<<<<<<< Updated upstream
     per_device_train_batch_size=16,  # Adjust batch size
     per_device_eval_batch_size=10,   # Evaluation batch size
     num_train_epochs=4,
+=======
+    per_device_train_batch_size=16,  # 调整 batch size
+    per_device_eval_batch_size=10,   # 评估 batch size
+    num_train_epochs=10,
+>>>>>>> Stashed changes
     weight_decay=0.01,
     logging_dir='./logs',
     logging_steps=10,
