@@ -16,25 +16,13 @@ from datetime import datetime
 # Import your data
 from data_splitting import X_train, y_train, X_val, y_val, X_test, y_test
 
-
-#################################  delete this block after testing
-# For testing purposes, use only a small subset of the data
-def create_test_subset(X, y, num_samples=50):
-    if len(X) <= num_samples:
-        return X, y
-    indices = np.random.choice(len(X), num_samples, replace=False)
-    return [X[i] for i in indices], [y[i] for i in indices]
-
-# Create small subsets for testing
-X_train_test, y_train_test = create_test_subset(X_train, y_train)
-X_val_test, y_val_test = create_test_subset(X_val, y_val)
-X_test_test, y_test_test = create_test_subset(X_test, y_test)
-
-# Use these subsets instead of the full data
-X_train, y_train = X_train_test, y_train_test
-X_val, y_val = X_val_test, y_val_test
-X_test, y_test = X_test_test, y_test_test
-##################################
+import random
+SEED = 42
+random.seed(SEED)
+np.random.seed(SEED)
+torch.manual_seed(SEED)
+if torch.cuda.is_available():
+    torch.cuda.manual_seed_all(SEED)
 
 # Check if GPU is available
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
@@ -60,26 +48,13 @@ dataset = DatasetDict({
 model_name = "distilbert-base-uncased-finetuned-sst-2-english"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
-
-############################ delete this block after testing
-# Define hyperparameter grid - modified for quick testing
-learning_rates = [1e-5, 2e-5]  # Just one learning rate
-batch_sizes = [16]       # Just one batch size
-max_epochs = 3           # Only 3 epochs
-patience = 2
-weight_decay = 0.01
-max_grad_norm = 1.0
-##########################
-
 # Define hyperparameter grid
-'''
 learning_rates = [1e-5, 2e-5, 5e-5]
 batch_sizes = [16, 32]
 max_epochs = 8
 patience = 2
 weight_decay = 0.01
-max_grad_norm = 1.0'
-'''
+max_grad_norm = 1.0
 
 # Create a directory to save results
 timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
