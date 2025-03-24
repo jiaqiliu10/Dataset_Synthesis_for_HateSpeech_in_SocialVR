@@ -8,10 +8,11 @@ from transformers import get_scheduler
 from datasets import Dataset, DatasetDict
 from tqdm import tqdm
 import matplotlib.pyplot as plt
-from sklearn.metrics import f1_score, accuracy_score
+from sklearn.metrics import f1_score, accuracy_score, classification_report, confusion_matrix
 import os
 import json
 from datetime import datetime
+import seaborn as sns
 
 # Import your data
 from data_splitting import X_train, y_train, X_val, y_val, X_test, y_test
@@ -349,6 +350,25 @@ test_f1 = f1_score(test_true, test_preds, average='weighted')
 print(f"\nTest Set Results:")
 print(f"  Accuracy: {test_accuracy:.4f}")
 print(f"  F1 Score: {test_f1:.4f}")
+
+# Generate and save detailed classification report
+report = classification_report(test_true, test_preds, target_names=['Non-Hate', 'Hate'], output_dict=True)
+with open(os.path.join(results_dir, 'classification_report.json'), 'w') as f:
+    json.dump(report, f, indent=2)
+
+# Print detailed classification report
+print("\nDetailed Classification Report:")
+print(classification_report(test_true, test_preds, target_names=['Non-Hate', 'Hate']))
+
+# Generate and save confusion matrix
+cm = confusion_matrix(test_true, test_preds)
+plt.figure(figsize=(8, 6))
+sns.heatmap(cm, annot=True, fmt='d', cmap='Blues', xticklabels=['Non-Hate', 'Hate'], yticklabels=['Non-Hate', 'Hate'])
+plt.xlabel('Predicted')
+plt.ylabel('True')
+plt.title('Confusion Matrix')
+plt.tight_layout()
+plt.savefig(os.path.join(results_dir, 'confusion_matrix.png'))
 
 # Save the best model
 final_model_path = os.path.join(results_dir, "best_model")
