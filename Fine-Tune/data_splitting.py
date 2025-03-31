@@ -50,3 +50,40 @@ print(f"Train set ({len(X_train)}), validation set ({len(X_val)}), test set ({le
 print(f"For train set, {train_nonhate} non-hate speech, {train_hate} hate speech ({train_explicit} explicit hate, {train_implicit} implicit hate)")
 print(f"For validation set, {val_nonhate} non-hate speech, {val_hate} hate speech ({val_explicit} explicit hate, {val_implicit} implicit hate)")
 print(f"For test set, {test_nonhate} non-hate speech, {test_hate} hate speech ({test_explicit} explicit hate, {test_implicit} implicit hate)")
+
+# Save the datasets to CSV files
+print("\nSaving datasets to CSV files...")
+
+# Create output directory if it doesn't exist
+output_dir = os.path.join(os.path.dirname(__file__), 'split_data')
+os.makedirs(output_dir, exist_ok=True)
+
+# Save train set
+train_df = pd.DataFrame({
+    "text": X_train,
+    "labels": y_train,
+    "stratified_purpose": strat_y_train
+})
+train_path = os.path.join(output_dir, 'train_data.csv')
+train_df.to_csv(train_path, index=False)
+print(f"Train data saved to {train_path}")
+
+# Save validation set
+val_df = pd.DataFrame({
+    "text": X_val,
+    "labels": y_val,
+    "stratified_purpose": strat_y_val
+})
+val_path = os.path.join(output_dir, 'validation_data.csv')
+val_df.to_csv(val_path, index=False)
+print(f"Validation data saved to {val_path}")
+
+# Save test set
+test_df = pd.DataFrame({
+    "text": X_test,
+    "labels": y_test,
+    "stratified_purpose": strat_y_test
+})
+test_path = os.path.join(output_dir, 'test_data.csv')
+test_df.to_csv(test_path, index=False)
+print(f"Test data saved to {test_path}")
