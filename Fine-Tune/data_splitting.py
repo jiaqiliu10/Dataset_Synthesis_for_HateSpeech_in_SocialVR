@@ -50,9 +50,3 @@ print(f"Train set ({len(X_train)}), validation set ({len(X_val)}), test set ({le
 print(f"For train set, {train_nonhate} non-hate speech, {train_hate} hate speech ({train_explicit} explicit hate, {train_implicit} implicit hate)")
 print(f"For validation set, {val_nonhate} non-hate speech, {val_hate} hate speech ({val_explicit} explicit hate, {val_implicit} implicit hate)")
 print(f"For test set, {test_nonhate} non-hate speech, {test_hate} hate speech ({test_explicit} explicit hate, {test_implicit} implicit hate)")
-
-# In total 1475 non-hate speech, 1119 hate speech (131 explicit hate, 988 implicit hate)
-# Train set (2075), validation set (259), test set (260)
-# For train set, 1180 non-hate speech, 895 hate speech (103 explicit hate, 792 implicit hate)
-# For validation set, 147 non-hate speech, 112 hate speech (8 explicit hate, 104 implicit hate)
-# For test set, 148 non-hate speech, 112 hate speech (10 explicit hate, 102 implicit hate)
