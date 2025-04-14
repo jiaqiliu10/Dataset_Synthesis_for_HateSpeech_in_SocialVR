@@ -46,6 +46,11 @@ dataset = DatasetDict({
 })
 
 # Load the tokenizer
+# Choose Model
+# Here we are using DistilBERT
+# Alternative models:
+# Roberta - facebook/roberta-hate-speech-dynabench-r4-target
+# HateBert - GroNLP/hateBERT
 model_name = "distilbert-base-uncased-finetuned-sst-2-english"
 tokenizer = AutoTokenizer.from_pretrained(model_name)
 
