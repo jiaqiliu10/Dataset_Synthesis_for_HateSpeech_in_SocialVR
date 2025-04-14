@@ -34,17 +34,6 @@ DATASET_SYNTHESIS_FOR_HATESPEECH/
 - **Dr. Aanchan Mohan**
 - **Dr. Mirjana Prpa**
 
-## License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## Acknowledgments
-
-- HateMM dataset creators
-- OpenAI for Whisper transcription technology and GPT-4o
-- Hugging Face for the Transformers library
-- Northeastern University for supporting this research# Dataset Synthesis for HateSpeech in Social VR
-
 ## Project Description
 
 This project develops a specialized dataset and detection system for identifying hate speech in Social Virtual Reality (Social VR) environments. With the rapid advancement of social VR platforms like VRChat, there's an increasing need for effective content moderation. Our work addresses the gap in VR-specific hate speech detection by creating a tailored dataset that captures the unique characteristics of harmful content in immersive social environments, particularly focusing on implicit hate speech that develops across conversation turns.
@@ -174,3 +163,7 @@ The best model achieved:
 - HateMM dataset creators
 - OpenAI for Whisper transcription technology and GPT-4o
 - Hugging Face for the Transformers library
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
