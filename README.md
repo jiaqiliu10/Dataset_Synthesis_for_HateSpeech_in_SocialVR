@@ -143,12 +143,12 @@ Key findings:
 - **HateBERT**: [GroNLP/hateBERT](https://huggingface.co/GroNLP/hateBERT)
 
 ### Fine-tuned Models
-- **Fine-tuned HateBERT**: [https://huggingface.co/northeastern-khoury/hatebert-vr](https://huggingface.co/northeastern-khoury/hatebert-vr)
-- **Fine-tuned RoBERTa**: [https://huggingface.co/northeastern-khoury/roberta-hate-speech-vr](https://huggingface.co/northeastern-khoury/roberta-hate-speech-vr)
-- **Fine-tuned DistilBERT**: [https://huggingface.co/northeastern-khoury/distilbert-vr-hate-speech](https://huggingface.co/northeastern-khoury/distilbert-vr-hate-speech)
+- **Fine-tuned HateBERT**: [https://huggingface.co/spaces/Josh09122/CS7980-HS-hatebert/tree/main](https://huggingface.co/spaces/Josh09122/CS7980-HS-hatebert/tree/main)
+- **Fine-tuned RoBERTa**: [https://huggingface.co/spaces/Josh09122/CS7980-HS-roberta/tree/main](https://huggingface.co/spaces/Josh09122/CS7980-HS-roberta/tree/main)
+- **Fine-tuned DistilBERT**: [https://huggingface.co/spaces/Josh09122/CS7980-HS-distillbert/tree/main](https://huggingface.co/spaces/Josh09122/CS7980-HS-distillbert/tree/main)
 
 ### Generated Dataset
-- **VR Hate Speech Dataset**: [https://huggingface.co/datasets/northeastern-khoury/vr-hate-speech](https://huggingface.co/datasets/northeastern-khoury/vr-hate-speech)
+- **VR Hate Speech Dataset**: [https://huggingface.co/spaces/Josh09122/CS7980-HateSpeech/tree/main](https://huggingface.co/spaces/Josh09122/CS7980-HateSpeech/tree/main)
 
 ## Conclusion
 This study attempted to create and evaluate a specialized dataset for hate speech detection in social VR environments, with fine-tuned models showing promising performance. Our analysis suggests that VR hate speech may have some unique characteristics, with implicit expressions developing across multiple conversation turns appearing to be more common.
