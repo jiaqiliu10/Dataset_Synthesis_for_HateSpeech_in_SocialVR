@@ -148,7 +148,7 @@ Key findings:
 - **Fine-tuned DistilBERT**: [https://huggingface.co/spaces/Josh09122/CS7980-HS-distillbert/tree/main](https://huggingface.co/spaces/Josh09122/CS7980-HS-distillbert/tree/main)
 
 ### Generated Dataset
-- **VR Hate Speech Dataset**: [https://huggingface.co/spaces/Josh09122/CS7980-HateSpeech/tree/main](https://huggingface.co/spaces/Josh09122/CS7980-HateSpeech/tree/main)
+- **VR Hate Speech Dataset**: [https://huggingface.co/spaces/Josh09122/CS7980-HS-Dataset/tree/main](https://huggingface.co/spaces/Josh09122/CS7980-HS-Dataset/tree/main)
 
 ## Conclusion
 This study attempted to create and evaluate a specialized dataset for hate speech detection in social VR environments, with fine-tuned models showing promising performance. Our analysis suggests that VR hate speech may have some unique characteristics, with implicit expressions developing across multiple conversation turns appearing to be more common.
