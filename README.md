@@ -58,12 +58,16 @@ Our dataset (2,594 total samples) was created by combining transcribed audio fro
 
 2. Install Python dependencies:
    ```bash
-   pip install torch transformers datasets tqdm matplotlib seaborn scikit-learn pandas numpy whisper openai
+   pip install torch transformers datasets tqdm matplotlib seaborn scikit-learn pandas numpy whisper openai dotenv
    ```
 
 3. Install Node.js dependencies (if needed):
    ```bash
    npm install
+   ```
+4. Create a .env file in the root directory and add your OpenAI API key:
+   ```
+   OPENAI_API_KEY=sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
    ```
 
 ### Data Preparation
