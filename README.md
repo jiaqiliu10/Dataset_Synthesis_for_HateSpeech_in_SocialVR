@@ -48,6 +48,7 @@ Our dataset (2,594 total samples) was created by combining transcribed audio fro
 - PyTorch 1.10+
 - Transformers library
 - Node.js (for certain utilities)
+- `.env` file with OpenAI API key
 
 ### Installation
 
@@ -66,9 +67,10 @@ Our dataset (2,594 total samples) was created by combining transcribed audio fro
    npm install
    ```
 4. Create a .env file in the root directory and add your OpenAI API key:
-   ```
+   ```bash
    OPENAI_API_KEY=sk-proj-xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
    ```
+   ⚠️ Keep your API key secure and make sure .env is listed in .gitignore.
 
 ### Data Preparation
 
@@ -92,8 +94,9 @@ python Evaluation/experiment1/distilbert_test.py
 python Evaluation/experiment1/roberta_test.py
 
 # Experiment 2: Dataset Trainability Assessment
-# Then fine-tune the model of your choice by modifying the model_name variable in model_finetuning.py
-# Options include:
+# Simply run the fine-tuning script. It will automatically split the data (80/10/10) and begin training.
+# model_finetuning.py is the main entry point for this experiment.
+# Modify the model_name variable in the script to select which model to fine-tune:
 # - "distilbert-base-uncased-finetuned-sst-2-english" for DistilBERT
 # - "facebook/roberta-hate-speech-dynabench-r4-target" for RoBERTa-hate-speech
 # - "GroNLP/hateBERT" for HateBERT
@@ -102,6 +105,20 @@ python Fine-Tune/model_finetuning.py
 # Experiment 3: VR Hate Speech Characteristics Analysis
 python Evaluation/experiment3/error_analysis.py
 ```
+
+### Configuration and Hyperparameters
+You can adjust key hyperparameters in model_finetuning.py:
+```python
+learning_rates = [1e-5, 2e-5, 5e-5]
+batch_sizes = [16, 32]
+epochs = 3–8
+optimizer = AdamW
+early_stopping_patience = 2
+weight_decay = 0.01
+max_grad_norm = 1.0
+seed = 42
+```
+The main entry point for training is model_finetuning.py. Modify model_name inside this script to choose which model to fine-tune.
 
 ## Expected Output and Summary Results
 
@@ -153,6 +170,18 @@ Key findings:
 
 ### Generated Dataset
 - **VR Hate Speech Dataset**: [https://huggingface.co/spaces/Josh09122/CS7980-HS-Dataset/tree/main](https://huggingface.co/spaces/Josh09122/CS7980-HS-Dataset/tree/main)
+
+
+## Reproducibility Notes
+
+- All experiments are reproducible using fixed random seeds (seed=42)
+- Data splits are stratified to maintain class distribution
+- Results in the report can be reproduced by running the listed commands
+
+## Future Work
+- Integrate multimodal features (e.g., audio tone, gestures)
+- Enable real-time inference for live VR moderation
+- Extend dataset to include multilingual scenarios
 
 ## Conclusion
 This study attempted to create and evaluate a specialized dataset for hate speech detection in social VR environments, with fine-tuned models showing promising performance. Our analysis suggests that VR hate speech may have some unique characteristics, with implicit expressions developing across multiple conversation turns appearing to be more common.
