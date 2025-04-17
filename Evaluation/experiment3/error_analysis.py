@@ -162,10 +162,10 @@ def main():
     parser = argparse.ArgumentParser(description='Error analysis for hate speech detection')
     parser.add_argument('--model_path', type=str, 
                         # Fine-tuned HateBert model
-                        default='../../Results/experiment 2/hyperparameter_results_20250324_hatebert/best_model', 
+                        default='../../hyperparameter_results_20250324_hatebert/best_model', 
                         help='Path to the fine-tuned model directory')
     parser.add_argument('--test_data', type=str, 
-                        default='../../Results/split_data/test_data.csv',
+                        default='../../split_data/test_data.csv',
                         help='Path to test data CSV file')
     args = parser.parse_args()
     
