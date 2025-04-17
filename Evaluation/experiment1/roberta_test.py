@@ -29,7 +29,7 @@ def predict_hate_speech(text):
     return probs[0][1].item()  # Probability of hate speech
 
 # Load CSV data
-df = pd.read_csv('../Data/merged_all_conversations.csv')
+df = pd.read_csv('../../Data/merged_all_conversations.csv')
 
 # Apply the model to the messages
 print("Calculating hate speech scores...")
