@@ -1,5 +1,24 @@
-## Project Structure
+# Dataset Synthesis for Hate Speech in Social VR
+*A specialized dataset and model evaluation framework for detecting hate speech in immersive VR environments.*
 
+## Project Description
+
+This project develops a specialized dataset and detection system for identifying hate speech in Social Virtual Reality (Social VR) environments. With the rapid advancement of social VR platforms like VRChat, there's an increasing need for effective content moderation. Our work addresses the gap in VR-specific hate speech detection by creating a tailored dataset that captures the unique characteristics of harmful content in immersive social environments, particularly focusing on implicit hate speech that develops across conversation turns.
+
+Our dataset (2,594 total samples) was created by combining transcribed audio from the Modified HateMM dataset and synthetic VR scenarios generated using GPT-4o. It contains 1,453 non-hate speech instances (56.01%) and 1,141 hate speech instances (43.99%), with a notable 86.5% of hate speech being implicit rather than explicit, reflecting the subtle nature of toxic language in VR.
+
+## Team
+
+- **Kehan Yan** - Khoury College of Computer Sciences, Northeastern University
+- **Jiaqi Liu** - Khoury College of Computer Sciences, Northeastern University
+- **Jiangmeng Zhou** - Khoury College of Computer Sciences, Northeastern University
+
+## Mentors
+
+- **Dr. Aanchan Mohan**
+- **Dr. Mirjana Prpa**
+
+## Project Structure
 ```
 DATASET_SYNTHESIS_FOR_HATESPEECH/
 ├── Data/
@@ -22,23 +41,6 @@ DATASET_SYNTHESIS_FOR_HATESPEECH/
 │   └── generateNonHS.py              # Generate non-hate speech examples
 └── node_modules/                     # Node.js dependencies
 ```
-
-## Team
-
-- **Kehan Yan** - Khoury College of Computer Sciences, Northeastern University
-- **Jiaqi Liu** - Khoury College of Computer Sciences, Northeastern University
-- **Jiangmeng Zhou** - Khoury College of Computer Sciences, Northeastern University
-
-## Mentors
-
-- **Dr. Aanchan Mohan**
-- **Dr. Mirjana Prpa**
-
-## Project Description
-
-This project develops a specialized dataset and detection system for identifying hate speech in Social Virtual Reality (Social VR) environments. With the rapid advancement of social VR platforms like VRChat, there's an increasing need for effective content moderation. Our work addresses the gap in VR-specific hate speech detection by creating a tailored dataset that captures the unique characteristics of harmful content in immersive social environments, particularly focusing on implicit hate speech that develops across conversation turns.
-
-Our dataset (2,594 total samples) was created by combining transcribed audio from the Modified HateMM dataset and synthetic VR scenarios generated using GPT-4o. It contains 1,453 non-hate speech instances (56.01%) and 1,141 hate speech instances (43.99%), with a notable 86.5% of hate speech being implicit rather than explicit, reflecting the subtle nature of toxic language in VR.
 
 ## Instructions for Running the Project
 
@@ -74,36 +76,59 @@ Our dataset (2,594 total samples) was created by combining transcribed audio fro
 
 ### Data Preparation
 
+Navigate to the `Generation` folder:
 ```bash
 # Transcribe audio files
-python Generation/Whisper_HateMM/Whisper_HateMM_Transcription.py
+python Whisper_HateMM/Whisper_HateMM_Transcription.py
 
 # Generate synthetic data
-python Generation/generateHS.py
-python Generation/generateNonHS.py
+python generateHS.py
+python generateNonHS.py
 
 # Filter and merge conversations
-python Generation/filterConversations.py
+python filterConversations.py
 ```
 
 ### Running Experiments
 
+To run the three core experiments, please navigate to the appropriate subfolders and execute the scripts from there.
+
+#### Experiment 1: Pre-trained Model Evaluation
+Evaluate performance of models without fine-tuning:
+
+Navigate to the `experiment1` folder:
 ```bash
-# Experiment 1: Pre-trained Model Evaluation
-python Evaluation/experiment1/distilbert_test.py
-python Evaluation/experiment1/roberta_test.py
+cd Evaluation/experiment1
+python distilbert_test.py
+python roberta_test.py
+cd ../..  # Return to project root if needed
+```
 
-# Experiment 2: Dataset Trainability Assessment
-# Simply run the fine-tuning script. It will automatically split the data (80/10/10) and begin training.
-# model_finetuning.py is the main entry point for this experiment.
-# Modify the model_name variable in the script to select which model to fine-tune:
-# - "distilbert-base-uncased-finetuned-sst-2-english" for DistilBERT
-# - "facebook/roberta-hate-speech-dynabench-r4-target" for RoBERTa-hate-speech
-# - "GroNLP/hateBERT" for HateBERT
-python Fine-Tune/model_finetuning.py
+#### Experiment 2: Dataset Trainability Assessment
+Fine-tune and evaluate models on the VR dataset. This script handles data splitting automatically (80/10/10 split).
 
-# Experiment 3: VR Hate Speech Characteristics Analysis
-python Evaluation/experiment3/error_analysis.py
+Navigate to the Fine-Tune folder:
+```bash
+cd Fine-Tune
+python model_finetuning.py
+cd ..  # Return to project root if needed
+```
+This script automatically splits the dataset (80/10/10) and performs model fine-tuning.
+Modify the `model_name` variable in `model_finetuning.py` to choose which model to train:
+
+```python
+model_name = "distilbert-base-uncased-finetuned-sst-2-english"  # or use "facebook/roberta-hate-speech-dynabench-r4-target"
+# or "GroNLP/hateBERT"
+```
+
+#### Experiment 3: VR Hate Speech Characteristics Analysis
+Analyze model misclassifications and implicit/explicit hate speech breakdown:
+
+Navigate to the experiment3 folder:
+```bash
+cd Evaluation/experiment3
+python error_analysis.py
+cd ../..  # Return to project root if needed
 ```
 
 ### Configuration and Hyperparameters
