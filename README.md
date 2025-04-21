@@ -196,6 +196,8 @@ Key findings:
 ### Generated Dataset
 - **VR Hate Speech Dataset**: [https://huggingface.co/spaces/Josh09122/CS7980-HS-Dataset/tree/main](https://huggingface.co/spaces/Josh09122/CS7980-HS-Dataset/tree/main)
 
+## Link to Demo Video
+[https://drive.google.com/file/d/1o1UagyZO4XpVNR_ybE_1GYCIwvWeVhnr/view?usp=sharing](https://drive.google.com/file/d/1o1UagyZO4XpVNR_ybE_1GYCIwvWeVhnr/view?usp=sharing)
 
 ## Reproducibility Notes
 
